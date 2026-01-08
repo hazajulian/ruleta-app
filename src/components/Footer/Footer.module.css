@@ -70,23 +70,24 @@
   align-items: center;
   gap: 0.55rem;
 
-  border: 0;
   background: transparent;
   color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
 
   padding: 0.35rem 0.6rem;
   border-radius: var(--r-pill);
 
-  cursor: not-allowed;
-  opacity: 0.72;
+  cursor: pointer;
 
-  transition: color var(--t-150) var(--ease), background var(--t-150) var(--ease),
-    opacity var(--t-150) var(--ease);
+  transition: color var(--t-150) var(--ease),
+    background var(--t-150) var(--ease),
+    transform var(--t-150) var(--ease);
 }
 
-.githubBtn:disabled:hover {
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(255, 255, 255, 0.78);
+.githubBtn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.95);
+  transform: translateY(-1px);
 }
 
 .githubBtn:focus-visible {
