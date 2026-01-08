@@ -1,0 +1,413 @@
+/* ===========================
+   Dice Page — Layout
+   =========================== */
+
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--page-pad-y) var(--page-pad-x) var(--page-pad-bottom);
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: var(--fs-26);
+  letter-spacing: -0.2px;
+}
+
+.subtitle {
+  margin-top: 0.8rem;
+  font-size: var(--fs-16);
+  color: var(--text-muted);
+  max-width: 60ch;
+}
+
+.layout {
+  display: grid;
+  gap: 1.6rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px) {
+  .layout {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: start;
+  }
+}
+
+/* ===========================
+   Dice Area
+   =========================== */
+
+.diceArea {
+  display: grid;
+  place-items: center;
+  gap: 1.6rem;
+
+  padding: 2rem;
+  border-radius: var(--r-xl);
+  border: var(--b-12);
+
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+
+  min-height: 360px;
+}
+
+/* Grid:
+   - Desktop: 3 cols
+   - Mobile: 2 cols
+   - Anchos controlados para evitar “amontonado” */
+.diceGrid {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: min(520px, 100%);
+  justify-items: center;
+}
+
+@media (max-width: 950px) {
+  .diceArea {
+    padding: 1.6rem;
+  }
+
+  .diceGrid {
+    gap: 1rem;
+    width: min(480px, 100%);
+  }
+}
+
+@media (max-width: 520px) {
+  .diceArea {
+    padding: 1.4rem;
+  }
+
+  .diceGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    width: min(360px, 100%);
+  }
+}
+
+/* ===========================
+   Die
+   =========================== */
+
+.die {
+  width: clamp(92px, 11vw, 120px);
+  height: clamp(92px, 11vw, 120px);
+  border-radius: 18px;
+  position: relative;
+
+  background: radial-gradient(
+    circle at 28% 22%,
+    rgba(255, 255, 255, 0.78),
+    rgba(235, 235, 235, 0.7) 45%,
+    rgba(215, 215, 215, 0.62) 100%
+  );
+
+  border: 1px solid rgba(0, 0, 0, 0.12);
+
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.42), inset 0 2px 8px rgba(255, 255, 255, 0.5),
+    inset 0 -10px 18px rgba(0, 0, 0, 0.1);
+
+  transform: translateZ(0);
+  transition: transform 140ms var(--ease), box-shadow 160ms var(--ease), filter 160ms var(--ease);
+}
+
+.die::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  pointer-events: none;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0) 45%,
+    rgba(0, 0, 0, 0.2)
+  );
+  opacity: 0.28;
+}
+
+.dieRolling {
+  animation: rollSpin 520ms ease-in-out infinite;
+  filter: blur(0.15px) saturate(1.02);
+}
+
+@keyframes rollSpin {
+  0% {
+    transform: rotate(0deg) translateY(0) scale(0.99);
+  }
+  25% {
+    transform: rotate(7deg) translateY(-3px) scale(1.01);
+  }
+  50% {
+    transform: rotate(-6deg) translateY(1px) scale(1);
+  }
+  75% {
+    transform: rotate(9deg) translateY(-2px) scale(1.01);
+  }
+  100% {
+    transform: rotate(0deg) translateY(0) scale(0.99);
+  }
+}
+
+/* ===========================
+   Pips
+   =========================== */
+
+.pip {
+  position: absolute;
+  width: clamp(12px, 1.35vw, 14px);
+  height: clamp(12px, 1.35vw, 14px);
+  border-radius: var(--r-pill);
+
+  background: radial-gradient(circle at 30% 30%, rgba(70, 70, 70, 1), rgba(18, 18, 18, 1));
+
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.18), 0 1px 2px rgba(0, 0, 0, 0.45);
+
+  opacity: 0;
+}
+
+/* 3x3 positions */
+.pip1 {
+  top: 20%;
+  left: 20%;
+}
+.pip2 {
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.pip3 {
+  top: 20%;
+  right: 20%;
+}
+
+.pip4 {
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+}
+.pip5 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.pip6 {
+  top: 50%;
+  right: 20%;
+  transform: translateY(-50%);
+}
+
+.pip7 {
+  bottom: 20%;
+  left: 20%;
+}
+.pip8 {
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.pip9 {
+  bottom: 20%;
+  right: 20%;
+}
+
+/* show pips by value */
+.die[data-value="1"] .pip5 {
+  opacity: 1;
+}
+
+.die[data-value="2"] .pip1,
+.die[data-value="2"] .pip9 {
+  opacity: 1;
+}
+
+.die[data-value="3"] .pip1,
+.die[data-value="3"] .pip5,
+.die[data-value="3"] .pip9 {
+  opacity: 1;
+}
+
+.die[data-value="4"] .pip1,
+.die[data-value="4"] .pip3,
+.die[data-value="4"] .pip7,
+.die[data-value="4"] .pip9 {
+  opacity: 1;
+}
+
+.die[data-value="5"] .pip1,
+.die[data-value="5"] .pip3,
+.die[data-value="5"] .pip5,
+.die[data-value="5"] .pip7,
+.die[data-value="5"] .pip9 {
+  opacity: 1;
+}
+
+.die[data-value="6"] .pip1,
+.die[data-value="6"] .pip3,
+.die[data-value="6"] .pip4,
+.die[data-value="6"] .pip6,
+.die[data-value="6"] .pip7,
+.die[data-value="6"] .pip9 {
+  opacity: 1;
+}
+
+/* ===========================
+   Total
+   =========================== */
+
+.total {
+  width: min(520px, 100%);
+  border-radius: var(--r-lg);
+  border: var(--b-14);
+  background: var(--surface-04);
+  padding: 1.3rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+
+  animation: pop 260ms var(--ease);
+}
+
+.totalLabel {
+  font-size: var(--fs-13);
+  letter-spacing: 5px;
+  color: rgba(255, 255, 255, 0.7);
+  transform: translateY(1px);
+}
+
+.totalValue {
+  font-size: 2.8rem;
+  font-weight: var(--fw-800);
+  color: var(--text-strong);
+  line-height: 1;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.98);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===========================
+   Panel
+   =========================== */
+
+.panel {
+  border-radius: var(--r-xl);
+  border: var(--b-12);
+
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+
+  padding: 1.6rem;
+}
+
+.panelTitle {
+  font-size: var(--fs-16);
+  margin-bottom: 1.2rem;
+}
+
+.control {
+  margin-bottom: 1.2rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.controlLabel {
+  font-size: var(--fs-13);
+  color: var(--text-muted);
+}
+
+.stepper {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.stepBtn {
+  height: 44px;
+  border-radius: var(--r-md);
+  border: var(--b-12);
+  background: var(--surface-04);
+  color: var(--text-strong);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.countBox {
+  height: 44px;
+  border-radius: var(--r-md);
+  border: var(--b-12);
+  background: var(--ink-06);
+  display: grid;
+  place-items: center;
+  font-size: var(--fs-16);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.roll {
+  width: 100%;
+  height: 44px;
+  border-radius: var(--r-md);
+  border: var(--b-12);
+  background: var(--surface-05);
+  color: var(--text-strong);
+  font-size: var(--fs-15);
+  font-weight: var(--fw-700);
+  cursor: pointer;
+}
+
+.reset {
+  width: 100%;
+  height: 40px;
+  margin-top: 0.8rem;
+  border-radius: var(--r-md);
+  border: var(--b-dash-25);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: var(--fs-13);
+  cursor: pointer;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.reset:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-strong);
+}
+
+.tips {
+  margin-top: 1.2rem;
+  display: grid;
+  gap: 0.7rem;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: var(--fs-13);
+}
+
+.tipRow {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.tipDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.35);
+}

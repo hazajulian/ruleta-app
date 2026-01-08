@@ -1,0 +1,253 @@
+/* ===========================
+   Page layout
+   =========================== */
+
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--page-pad-y) var(--page-pad-x) var(--page-pad-bottom);
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: var(--fs-26);
+  letter-spacing: -0.2px;
+}
+
+.subtitle {
+  margin-top: 0.8rem;
+  font-size: var(--fs-16);
+  color: var(--text-muted);
+  max-width: 60ch;
+}
+
+.layout {
+  display: grid;
+  gap: 1.6rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px) {
+  .layout {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: start;
+  }
+}
+
+/* ===========================
+   Shared surfaces
+   =========================== */
+
+.coinArea,
+.panel {
+  border-radius: var(--r-xl);
+  border: var(--b-12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+}
+
+/* ===========================
+   Coin area
+   =========================== */
+
+.coinArea {
+  display: grid;
+  place-items: center;
+  gap: 1.6rem;
+  padding: 2rem;
+  min-height: 360px;
+}
+
+.coinWrap {
+  width: 280px;
+  height: 280px;
+  display: grid;
+  place-items: center;
+  perspective: 1000px;
+}
+
+.coin {
+  width: 240px;
+  height: 240px;
+  position: relative;
+  transform-style: preserve-3d;
+  border-radius: var(--r-pill);
+  transform: translateZ(0);
+  box-shadow: var(--shadow-coin);
+}
+
+.coin::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: var(--r-pill);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.05),
+    rgba(0, 0, 0, 0.35),
+    rgba(255, 255, 255, 0.06)
+  );
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* Faces */
+.face {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-pill);
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.front {
+  transform: rotateY(0deg);
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.coinSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: saturate(1.18) contrast(1.05);
+}
+
+/* ===========================
+   SVG engraving
+   =========================== */
+
+.engraved {
+  opacity: 0.95;
+}
+
+.engraveFill {
+  fill: url(#engraveFill);
+}
+
+.engraveStrokeSoft {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.25);
+  stroke-width: 16;
+  stroke-linecap: round;
+}
+
+.engraveStroke {
+  fill: none;
+  stroke: url(#engraveFillB);
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+
+.coinText {
+  font-size: 15px;
+  font-weight: var(--fw-900);
+  letter-spacing: 4px;
+  paint-order: stroke fill;
+  stroke: rgba(0, 0, 0, 0.35);
+  stroke-width: 2px;
+  fill: rgba(255, 255, 255, 0.38);
+  opacity: 0.95;
+}
+
+.coinTextFront,
+.coinTextBack {
+  fill: rgba(255, 255, 255, 0.4);
+}
+
+/* ===========================
+   Result
+   =========================== */
+
+.result {
+  margin-top: 0.2rem;
+  padding: 1.2rem;
+  border-radius: var(--r-lg);
+  background: var(--surface-05);
+  border: var(--b-16);
+  font-size: var(--fs-17);
+  text-align: center;
+  animation: pop 260ms var(--ease);
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.98);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===========================
+   Panel
+   =========================== */
+
+.panel {
+  padding: 1.6rem;
+}
+
+.panelTitle {
+  font-size: var(--fs-16);
+  margin-bottom: 1.2rem;
+}
+
+.spin {
+  width: 100%;
+  height: 44px;
+  border-radius: var(--r-md);
+  border: var(--b-12);
+  background: var(--surface-05);
+  color: var(--text-strong);
+  font-size: var(--fs-15);
+  font-weight: var(--fw-700);
+  cursor: pointer;
+}
+
+.reset {
+  width: 100%;
+  height: 40px;
+  margin-top: 0.8rem;
+  border-radius: var(--r-md);
+  border: var(--b-dash-25);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: var(--fs-13);
+  cursor: pointer;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.reset:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-strong);
+}
+
+.tips {
+  margin-top: 1.2rem;
+  display: grid;
+  gap: 0.7rem;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: var(--fs-13);
+}
+
+.tipRow {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.tipDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.35);
+}

@@ -1,0 +1,129 @@
+/* =========================================================
+   THEME TOKENS — Ruletita.app
+   Fuente única de verdad para diseño y escalado futuro
+   ========================================================= */
+
+:root {
+  /* -------------------------
+     Layout
+     ------------------------- */
+  --page-max: 1100px;
+  --page-pad-x: 1.6rem;
+  --page-pad-y: 2.4rem;
+  --page-pad-bottom: 4rem;
+
+  /* -------------------------
+     Radius
+     ------------------------- */
+  --r-sm: 10px;
+  --r-md: 12px;
+  --r-lg: 14px;
+  --r-xl: 16px;
+  --r-pill: 999px;
+
+  /* -------------------------
+     Typography
+     ------------------------- */
+  --fs-12: 1.2rem;
+  --fs-13: 1.3rem;
+  --fs-14: 1.4rem;
+  --fs-15: 1.5rem;
+  --fs-16: 1.6rem;
+  --fs-17: 1.7rem;
+  --fs-18: 1.8rem;
+  --fs-24: 2.4rem;
+  --fs-26: 2.6rem;
+  --fs-30: 3rem;
+
+  --fw-700: 700;
+  --fw-800: 800;
+  --fw-900: 900;
+
+  /* -------------------------
+     Text colors
+     ------------------------- */
+  --text: rgba(255, 255, 255, 0.9);
+  --text-strong: rgba(255, 255, 255, 0.95);
+  --text-muted: rgba(255, 255, 255, 0.75);
+  --text-soft: rgba(255, 255, 255, 0.65);
+  --text-dim: rgba(255, 255, 255, 0.55);
+
+  /* -------------------------
+     Backgrounds & surfaces
+     ------------------------- */
+  --bg: #0b0d10;
+
+  --surface-01: rgba(255, 255, 255, 0.03);
+  --surface-02: rgba(255, 255, 255, 0.045);
+  --surface-03: rgba(255, 255, 255, 0.06);
+  --surface-04: rgba(255, 255, 255, 0.08);
+  --surface-05: rgba(255, 255, 255, 0.12);
+
+  /* Ink layers (inputs / panels internos) */
+  --ink-04: rgba(0, 0, 0, 0.22);
+  --ink-05: rgba(0, 0, 0, 0.27);
+  --ink-06: rgba(0, 0, 0, 0.32);
+
+  /* -------------------------
+     Borders
+     ------------------------- */
+  --b-08: 1px solid rgba(255, 255, 255, 0.08);
+  --b-10: 1px solid rgba(255, 255, 255, 0.10);
+  --b-12: 1px solid rgba(255, 255, 255, 0.12);
+  --b-14: 1px solid rgba(255, 255, 255, 0.14);
+  --b-16: 1px solid rgba(255, 255, 255, 0.16);
+  --b-18: 1px solid rgba(255, 255, 255, 0.18);
+  --b-22: 1px solid rgba(255, 255, 255, 0.22);
+
+  --b-dash-16: 1px dashed rgba(255, 255, 255, 0.16);
+  --b-dash-25: 1px dashed rgba(255, 255, 255, 0.25);
+
+  /* -------------------------
+     Shadows
+     ------------------------- */
+  --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.18);
+  --shadow-md: 0 14px 40px rgba(0, 0, 0, 0.24);
+  --shadow-coin: 0 18px 45px rgba(0, 0, 0, 0.45);
+  --shadow-wheel: 0 20px 50px rgba(0, 0, 0, 0.35);
+
+  /* -------------------------
+     Motion / transitions
+     ------------------------- */
+  --ease: cubic-bezier(0.2, 0.9, 0.2, 1);
+
+  --t-120: 120ms;
+  --t-150: 150ms;
+  --t-180: 180ms;
+  --t-200: 200ms;
+
+  /* -------------------------
+     Focus & accessibility
+     ------------------------- */
+  --focus-ring: rgba(255, 255, 255, 0.14);
+
+  /* -------------------------
+     Shared button baseline
+     ------------------------- */
+  --btn-bg: rgba(255, 255, 255, 0.10);
+  --btn-bg-hover: rgba(255, 255, 255, 0.14);
+  --btn-border: rgba(255, 255, 255, 0.16);
+}
+
+/* -------------------------
+   Responsive spacing tokens
+   ------------------------- */
+@media (max-width: 760px) {
+  :root {
+    --page-pad-x: 1.2rem;
+    --page-pad-y: 2.1rem;
+    --page-pad-bottom: 3.2rem;
+  }
+}
+
+@media (max-width: 520px) {
+  :root {
+    --page-pad-x: 1rem;
+    --page-pad-y: 1.8rem;
+    --page-pad-bottom: 2.8rem;
+  }
+}

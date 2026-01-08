@@ -1,0 +1,119 @@
+/* =========================================================
+   Reset Modal — Backdrop
+   ========================================================= */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+
+  display: grid;
+  place-items: center;
+  padding: 1.6rem;
+}
+
+/* =========================================================
+   Reset Modal — Container
+   ========================================================= */
+
+.modal {
+  width: min(520px, 100%);
+  border-radius: var(--r-xl);
+  border: var(--b-10);
+
+  background: rgba(10, 12, 15, 0.88);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+
+  padding: 1.6rem;
+  position: relative;
+}
+
+/* =========================================================
+   Close button
+   ========================================================= */
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: var(--r-sm);
+  border: var(--b-10);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.85);
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   Content
+   ========================================================= */
+
+.title {
+  font-size: var(--fs-18);
+  color: var(--text-strong);
+  margin-bottom: 0.6rem;
+}
+
+.text {
+  font-size: var(--fs-14);
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* =========================================================
+   Actions
+   ========================================================= */
+
+.actions {
+  margin-top: 1.4rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+}
+
+/* Botón secundario: mantiene look actual, pero hereda hover de .btn */
+.btnGhost {
+  height: 40px;
+  padding: 0 1.1rem;
+
+  border-radius: var(--r-md);
+  border: var(--b-dash-25);
+  background: transparent;
+
+  color: var(--text-muted);
+}
+
+/* Botón primario: mantiene look actual, pero hereda hover de .btn */
+.btnPrimary {
+  height: 40px;
+  padding: 0 1.1rem;
+
+  border-radius: var(--r-md);
+  border: var(--b-12);
+
+  background: var(--surface-05);
+  color: var(--text-strong);
+  font-weight: var(--fw-700);
+}
+
+/* =========================================================
+   Cursor fix — Action buttons
+   ========================================================= */
+
+.actions button {
+  cursor: pointer;
+}
+
+.actions button:disabled {
+  cursor: not-allowed;
+}

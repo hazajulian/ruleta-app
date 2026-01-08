@@ -1,0 +1,289 @@
+/* ===========================
+   Home Page
+   =========================== */
+
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--page-pad-y) var(--page-pad-x) var(--page-pad-bottom);
+}
+
+/* ===========================
+   Hero
+   =========================== */
+
+.hero {
+  padding: 2.8rem 0 2rem;
+}
+
+.title {
+  font-size: var(--fs-30);
+  line-height: 1.08;
+  letter-spacing: -0.4px;
+
+  /* Micro gradiente premium (muy sutil) */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.82));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  margin-top: 1.05rem;
+  font-size: var(--fs-16);
+  color: var(--text-muted);
+  max-width: 66ch;
+}
+
+/* ===========================
+   Value pills
+   =========================== */
+
+.pills {
+  margin-top: 1.6rem;
+  display: grid;
+  gap: 1.05rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  justify-items: center;
+}
+
+.pill {
+  width: 100%;
+  max-width: 360px;
+
+  border-radius: var(--r-pill);
+  padding: 0.8rem 1.15rem;
+
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+  border: var(--b-10);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: center;
+
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.pillLabel {
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.pillText {
+  font-size: var(--fs-12);
+  color: rgba(255, 255, 255, 0.62);
+}
+
+@media (max-width: 900px) {
+  .pills {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pills > :last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 760px) {
+  .pills {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===========================
+   Tools grid
+   =========================== */
+
+.grid {
+  margin-top: 2.2rem;
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: stretch;
+}
+
+/* Desktop curated layout:
+   - Mantiene 12 cols y centra el row de 2 cards cuando hay 5 items. */
+@media (min-width: 1020px) {
+  .grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .card {
+    grid-column: span 4;
+  }
+
+  /* Si hay 5 cards:
+     4ta y 5ta se centran (3..6) y (7..10) */
+  .grid > :nth-child(4):nth-last-child(2) {
+    grid-column: 3 / span 4;
+  }
+
+  .grid > :nth-child(5):last-child {
+    grid-column: 7 / span 4;
+  }
+}
+
+@media (max-width: 520px) {
+  .grid {
+    gap: 1.05rem;
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===========================
+   Tool card
+   =========================== */
+
+.card {
+  position: relative;
+  min-height: 210px;
+
+  padding: 1.35rem 1.35rem 1.25rem;
+  border-radius: var(--r-xl);
+
+  /* Fondo más integrado al background */
+  background:
+    radial-gradient(
+      1200px 420px at 20% 0%,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0) 55%
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.025));
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: inherit;
+  text-decoration: none;
+
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.32);
+
+  transition:
+    transform var(--t-150) var(--ease),
+    box-shadow var(--t-150) var(--ease),
+    border-color var(--t-150) var(--ease);
+}
+
+/* Borde premium sutil */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0));
+  opacity: 0.35;
+}
+
+.cardActive:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.48);
+}
+
+.cardActive:active {
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   Badge
+   =========================== */
+
+.badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  font-size: var(--fs-12);
+  padding: 0.32rem 0.75rem;
+  border-radius: var(--r-pill);
+
+  background: rgba(255, 255, 255, 0.05);
+  border: var(--b-12);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===========================
+   Icon tile
+   =========================== */
+
+.iconTile {
+  width: 78px;
+  height: 78px;
+  margin-bottom: 1rem;
+
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.icon {
+  width: 130%;
+  height: 130%;
+  object-fit: contain;
+  transform: scale(1.15);
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
+}
+
+/* ===========================
+   Text
+   =========================== */
+
+.cardTitle {
+  font-size: var(--fs-18);
+  line-height: 1.15;
+  margin: 0;
+  color: var(--text-strong);
+}
+
+.cardDesc {
+  margin-top: 0.55rem;
+  font-size: var(--fs-14);
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 52ch;
+}
+
+/* ===========================
+   Disabled
+   =========================== */
+
+.cardDisabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===========================
+   Compact tweaks
+   =========================== */
+
+@media (max-width: 520px) {
+  .hero {
+    padding: 2.2rem 0 1.4rem;
+  }
+
+  .title {
+    font-size: 2.7rem;
+  }
+
+  .card {
+    min-height: 200px;
+    padding: 1.2rem 1.2rem 1.1rem;
+  }
+
+  .iconTile {
+    width: 72px;
+    height: 72px;
+  }
+}

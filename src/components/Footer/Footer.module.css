@@ -1,0 +1,112 @@
+/* ===========================
+   Footer
+   =========================== */
+
+.footer {
+  width: 100%;
+  border-top: var(--b-08);
+
+  background: linear-gradient(180deg, rgba(12, 14, 20, 0.92), rgba(12, 14, 20, 0.82));
+  backdrop-filter: blur(12px);
+
+  box-shadow: 0 -18px 44px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 1.1rem var(--page-pad-x);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+
+  font-size: var(--fs-12);
+  color: var(--text-dim);
+}
+
+/* ===========================
+   Brand
+   =========================== */
+
+.brand {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: var(--fw-700);
+  text-decoration: none;
+  letter-spacing: 0.2px;
+  transition: opacity var(--t-150) var(--ease);
+}
+
+.brand:hover {
+  opacity: 0.9;
+}
+
+.brand:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.14);
+  border-radius: var(--r-pill);
+}
+
+/* ===========================
+   Text
+   =========================== */
+
+.text {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+/* ===========================
+   Repo button (disabled, premium)
+   =========================== */
+
+.githubBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.75);
+
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--r-pill);
+
+  cursor: not-allowed;
+  opacity: 0.72;
+
+  transition: color var(--t-150) var(--ease), background var(--t-150) var(--ease),
+    opacity var(--t-150) var(--ease);
+}
+
+.githubBtn:disabled:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.githubBtn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.14);
+}
+
+/* ===========================
+   Responsive
+   =========================== */
+
+@media (max-width: 640px) {
+  .inner {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .text {
+    white-space: normal;
+    max-width: 34ch;
+  }
+}
