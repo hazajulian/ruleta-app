@@ -20,16 +20,18 @@ export function Footer() {
 
         <p className={styles.text}>Herramientas de azar sin distracciones</p>
 
-        <button
+        <a
+          href="https://github.com/hazajulian/ruleta-app"
+          target="_blank"
+          rel="noopener noreferrer"
           className={styles.githubBtn}
-          type="button"
-          disabled
-          title="Repositorio (próximamente)"
-          aria-label="Repositorio (próximamente)"
+          title="Ver repositorio en GitHub"
+          aria-label="Ver repositorio en GitHub"
+          onClick={() => sfx.click()}
         >
           <FaGithub size={16} />
           <span>Repositorio</span>
-        </button>
+        </a>
       </div>
     </footer>
   );
