@@ -349,8 +349,9 @@
 }
 
 @media (max-width: 520px) {
-  .switchRow input {
-    accent-color: #3b82f6; /* azul claro premium */
+  /* Mobile: make checkboxes readable */
+  input[type="checkbox"] {
+    accent-color: #3b82f6;
   }
 }
 
