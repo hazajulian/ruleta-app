@@ -221,7 +221,7 @@
 .primaryBtn {
   flex: 1;
   background: var(--surface-05);
-  border: none; /* ✅ evita doble borde con .btn */
+  border: none; /* evita doble borde con .btn */
   font-weight: var(--fw-800);
 }
 
@@ -346,6 +346,12 @@
   gap: 10px;
   font-size: var(--fs-13);
   opacity: 0.9;
+}
+
+@media (max-width: 520px) {
+  .switchRow input {
+    accent-color: #3b82f6; /* azul claro premium */
+  }
 }
 
 .switchRow input {
