@@ -17,6 +17,12 @@
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Ruleta.app" />
 
+    <!-- Nice-to-have meta -->
+    <meta name="language" content="es" />
+    <meta name="application-name" content="Ruleta.app" />
+    <meta name="apple-mobile-web-app-title" content="Ruleta.app" />
+    <meta name="format-detection" content="telephone=no" />
+
     <!-- Canonical -->
     <link rel="canonical" href="https://ruleta-app-psi.vercel.app/" />
 
@@ -31,6 +37,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Ruleta.app" />
+    <meta property="og:locale" content="es_AR" />
     <meta property="og:title" content="Ruleta.app — Herramientas de azar sin distracciones" />
     <meta
       property="og:description"
@@ -48,7 +55,25 @@
       name="twitter:description"
       content="Ruleta, moneda, dados, número aleatorio y sorteo de nombres. Diseño premium, rápido y sin publicidad."
     />
+    <meta name="twitter:url" content="https://ruleta-app-psi.vercel.app/" />
     <meta name="twitter:image" content="https://ruleta-app-psi.vercel.app/og.png" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Ruleta.app",
+        "url": "https://ruleta-app-psi.vercel.app/",
+        "description": "Herramientas de azar con diseño premium: ruleta, moneda, dados, número aleatorio y sorteo de nombres.",
+        "inLanguage": "es-AR",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://ruleta-app-psi.vercel.app/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
   </head>
 
   <body>
