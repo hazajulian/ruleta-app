@@ -348,17 +348,9 @@
   opacity: 0.9;
 }
 
-@media (max-width: 520px) {
-  /* Mobile: make checkboxes readable */
-  input[type="checkbox"] {
-    accent-color: #3b82f6;
-  }
-}
-
 .switchRow input {
   width: 18px;
   height: 18px;
-  accent-color: rgba(255, 255, 255, 0.85);
 }
 
 .hint {
@@ -409,5 +401,71 @@
     max-width: 50%;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+}
+
+/* =========================================================
+   Mobile only: custom checkbox for "Permitir negativos"
+   Blue box + white check (even when disabled)
+   ========================================================= */
+
+@media (max-width: 520px) {
+  .negToggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Hide native checkbox but keep it accessible */
+  .negInput {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+  }
+
+  .negBox {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.06);
+
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    position: relative;
+    flex: 0 0 18px;
+  }
+
+  /* Checked: blue */
+  .negInput:checked + .negBox {
+    background: #3b82f6;
+    border-color: rgba(59, 130, 246, 0.95);
+  }
+
+  /* White check mark */
+  .negInput:checked + .negBox::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  /* Disabled state: keep it readable (no gray-out) */
+  .negInput:disabled + .negBox {
+    opacity: 0.95;
+  }
+
+  /* Focus ring */
+  .negInput:focus-visible + .negBox {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25);
   }
 }

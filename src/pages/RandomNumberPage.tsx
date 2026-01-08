@@ -364,15 +364,17 @@ export function RandomNumberPage() {
           <div className={styles.block}>
             <h3 className={styles.blockTitle}>Reglas</h3>
 
-            <label className={styles.switchRow}>
-              <input
-                type="checkbox"
-                checked={allowNegative}
-                onChange={(e) => onToggleAllowNegative(e.target.checked)}
-                disabled={isGenerating}
-              />
-              <span>Permitir negativos</span>
-            </label>
+              <label className={`${styles.switchRow} ${styles.negToggle}`}>
+                <input
+                  type="checkbox"
+                  checked={allowNegative}
+                  onChange={(e) => onToggleAllowNegative(e.target.checked)}
+                  disabled={isGenerating}
+                  className={styles.negInput}
+                />
+                <span className={styles.negBox} aria-hidden="true" />
+                <span>Permitir negativos</span>
+              </label>
 
             <p className={styles.hint}>{helperText}</p>
           </div>
